@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<malloc.h>
+#include<string.h>
 
 struct Masina {
 	int id;
@@ -81,13 +82,31 @@ void copiazaMasiniUsoare(struct Masina* vector, char nrElemente, float prag, str
 	}
 }
 
-struct Masina getPrimulElementConditionat(struct Masina* vector, int nrElemente, const char* conditie) {
+struct Masina getPrimaMasinaConditie(struct Masina* vectorMasini, int nrMasini, const char* modelConditie) {
 	//trebuie cautat elementul care indeplineste o conditie
 	//dupa atributul de tip char*. Acesta este returnat.
-	struct Masina s;
-	s.id = 1;
+	struct Masina m;
+	m.id = 0;
+	m.model = NULL;
+	m.tonaj = 0.0;
+	m.serie = 'z';
 
-	return s;
+	int ok = 0;
+	for (int i = 0; i < nrMasini; i++)
+	{
+		if (strcmp(vectorMasini[i].model, modelConditie) == 0)
+		{
+			m = vectorMasini[i];
+			m.model = malloc(sizeof(char) * (strlen(modelConditie) + 1));
+			strcpy_s(m.model, strlen(modelConditie) + 1, modelConditie);
+			ok = 1;
+		}
+
+		if (ok == 1)
+			break;
+	}
+
+	return m;
 }
 
 
@@ -99,11 +118,12 @@ int main() {
 	afisare(m);
 
 	struct Masina* vectorMasini;
-	int nrMasini = 3;
+	int nrMasini = 4;
 	vectorMasini = malloc(sizeof(struct Masina) * nrMasini);
 	vectorMasini[0] = initializare(2, "Mercedes", 2.2, 'S');
 	vectorMasini[1] = initializare(3, "Audi", 2.6, 'Q');
-	vectorMasini[2] = initializare(3, "Dacia", 1.8, 'A');
+	vectorMasini[2] = initializare(4, "Dacia", 1.8, 'A');
+	vectorMasini[3] = initializare(5, "Mercedes", 1.8, 'C');
 	printf("\n\n");
 	afisareVector(vectorMasini, nrMasini);
 	printf("\n\n");
@@ -120,5 +140,13 @@ int main() {
 	copiazaMasiniUsoare(vectorMasini, nrMasini, 2.5, &vectorMasiniCopiate, &nrElementeCopiate);
 	afisareVector(vectorMasiniCopiate, nrElementeCopiate);
 	dezalocare(&vectorMasiniCopiate, &nrElementeCopiate);
+
+	printf("\nPrima masina care indeplineste conditia este:\n");
+
+	struct Masina mConditie;
+	mConditie = getPrimaMasinaConditie(vectorMasini, nrMasini, "Mercedes");
+	afisare(mConditie);
+	dezalocare(&vectorMasini, &nrMasini);
+
 	return 0;
 }
