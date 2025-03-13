@@ -1,0 +1,5 @@
+1,4,35000.5,BMW_X5,Popescu,A
+2,2,45000.0,Audi_TT,Ionescu,B
+3,5,28000.75,Dacia_Lodgy,Georgescu,C
+4,3,15000.0,Renault_Clio,Enescu,D
+5,4,60000.9,Mercedes_C200,Vasilescu,E
