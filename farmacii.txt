@@ -1,0 +1,5 @@
+Catena,120.5,10
+Sensiblu,95.2,8
+HelpNet,110.1,12
+FarmaciaTei,200.3,20
+HelpNet,120.1,11
