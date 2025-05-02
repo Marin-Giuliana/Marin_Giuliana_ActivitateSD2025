@@ -177,20 +177,48 @@ int determinaNumarNoduri(Nod* radacina) {
 	return 0;
 }
 
-int calculeazaInaltimeArbore(/*arbore de masini */ ) {
-	//calculeaza inaltimea arborelui care este data de 
-	//lungimea maxima de la radacina pana la cel mai indepartat nod frunza
-	return 0;
+int calculeazaInaltimeArbore(Nod* radacina) {
+	if (radacina == NULL)
+		return 0;
+	else
+	{
+		int inaltimeSt = calculeazaInaltimeArbore(radacina->st);
+		int inaltimeDr = calculeazaInaltimeArbore(radacina->dr);
+		
+		int inaltimeMaxima;
+		if (inaltimeSt > inaltimeDr)
+			inaltimeMaxima = inaltimeSt;
+		else
+			inaltimeMaxima = inaltimeDr;
+		
+		return 1 + inaltimeMaxima;
+	}
 }
 
-float calculeazaPretTotal(/*arbore de masini */) {
-	//calculeaza pretul tuturor masinilor din arbore.
-	return 0;
+float calculeazaPretTotal(Nod* radacina) {
+	if (radacina == NULL)
+		return 0;
+	else
+	{
+		return radacina->info.pret + calculeazaPretTotal(radacina->st) + calculeazaPretTotal(radacina->dr);
+	}
 }
 
-float calculeazaPretulMasinilorUnuiSofer(/*arbore de masini */const char* numeSofer) {
-	//calculeaza pretul tuturor masinilor unui sofer.
-	return 0;
+float calculeazaPretulMasinilorUnuiSofer(Nod* radacina, const char* numeSofer) {
+	if (radacina == NULL)
+		return 0;
+	else 
+	{
+		float suma = 0;
+		if (strcmp(radacina->info.numeSofer, numeSofer) == 0)
+		{
+			suma += radacina->info.pret;
+		}
+		suma += calculeazaPretulMasinilorUnuiSofer(radacina->st, numeSofer);
+		suma += calculeazaPretulMasinilorUnuiSofer(radacina->dr, numeSofer);
+
+		return suma;
+	}
 }
 
 int main() {
@@ -210,8 +238,12 @@ int main() {
 
 	printf("\n-----------------------------\n");
 	int nrNoduri = determinaNumarNoduri(arbore);
-	printf("Numar total noduri in arbore: %d\n", nrNoduri);
+	printf("Numarul total de noduri in arbore: %d\n", nrNoduri);
+	printf("Inaltimea arborelui: %d\n", calculeazaInaltimeArbore(arbore));
 
+	printf("Pretul total al masinilor: %.2f\n", calculeazaPretTotal(arbore));
+	printf("Pretul masinilor soferului Gigel: %.2f\n", calculeazaPretulMasinilorUnuiSofer(arbore, "Gigel"));
+	
 	dezalocareArboreDeMasini(&arbore);
 	return 0;
 }
