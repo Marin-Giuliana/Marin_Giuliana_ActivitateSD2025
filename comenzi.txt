@@ -1,0 +1,5 @@
+1,Ionescu Vasile,2,120.50
+2,Popescu Maria,5,312.00
+3,Andrei Ioana,1,45.25
+4,Georgescu Paul,3,180.75
+5,Vasile Cristina,4,220.40

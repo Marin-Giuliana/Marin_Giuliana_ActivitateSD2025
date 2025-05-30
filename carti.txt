@@ -1,0 +1,10 @@
+﻿Critica ratiunii pure,Immanuel Kant,1781,9.5
+Republica,Platon,380,6.8
+Fiinta si timp,Martin Heidegger,1927,8.3
+Despre libertate,John Stuart Mill,1859,5.2
+Etica,Nicolaus Spinoza,1677,7.0
+Leviatan,Thomas Hobbes,1651,4.9
+Genealogia moralei,Friedrich Nietzsche,1887,7.8
+Tractatus Logico-Philosophicus,Ludwig Wittgenstein,1921,9.1
+Lumea ca vointa si reprezentare,Arthur Schopenhauer,1818,8.7
+Discurs asupra metodei,Rene Descartes,1637,6.0

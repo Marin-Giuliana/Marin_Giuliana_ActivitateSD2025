@@ -1,0 +1,10 @@
+Paris,Franta,19000000,4.7
+Tokyo,Japonia,15000000,4.8
+New York,SUA,13000000,4.6
+Bangkok,Thailanda,22000000,4.5
+Barcelona,Spania,9000000,4.8
+Londra,Marea Britanie,14000000,4.4
+Roma,Italia,10000000,4.3
+Dubai,Emiratele Arabe,16000000,4.6
+Istanbul,Turcia,12500000,4.5
+Singapore,Singapore,10500000,4.7
